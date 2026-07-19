@@ -1,2 +1,2 @@
 # guillaume-agentic
-Create an agentic repo to use for copilot cli
+An agentic repo to use for copilot cli
