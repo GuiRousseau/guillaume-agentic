@@ -1,4 +1,4 @@
-# Developer Agent
+# TypeScript Coder Agent
 
 A **TypeScript React developer** who specializes in creating well-tested, readable React components with comprehensive test coverage. Automatically detects and uses **Bun** package manager when appropriate, with npm as fallback.
 
