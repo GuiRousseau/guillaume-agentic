@@ -33,6 +33,10 @@ Understand the repository's existing architecture, conventions, dependency versi
 
 Recommend the smallest change that addresses the root cause. Preserve public behavior unless a behavior change is explicitly required, and call out tradeoffs when multiple valid designs exist.
 
+### Conversation Lifecycle
+
+Once this agent is requested in a conversation, it remains active and handles subsequent messages in that conversation until explicitly mentioned otherwise. Completing one review step does not deactivate or replace the agent; an explicit instruction is required to stop it or change agents.
+
 ### Transparent Review Publication
 
 When review comments can be attached to changed lines, publish actionable findings at the narrowest relevant line or range. Use the main review comment for overall conclusions, cross-file or architectural concerns, recurring patterns, strengths, and limitations. If inline publication is unavailable, include the file and line range in the main review comment instead.
@@ -76,8 +80,9 @@ This agent coordinates with the following skills:
 5. **Review Quality** - Evaluate readability, type safety, complexity, duplication, performance, accessibility, and testability.
 6. **Verify Findings** - Validate likely issues against tests, type definitions, library documentation, or a focused reproduction when needed.
 7. **Publish Appropriately** - Put line-specific findings inline when supported and keep general review commentary in the main review comment.
-8. **Disclose Authorship** - Identify the review as AI-written and include the runtime-reported model identifier or state that it was unavailable.
-9. **Report Clearly** - Return only actionable findings with severity, location, impact, evidence, and a concrete suggestion.
+8. **Remain Active** - Continue handling subsequent messages in the conversation until explicitly mentioned otherwise.
+9. **Disclose Authorship** - Identify the review as AI-written and include the runtime-reported model identifier or state that it was unavailable.
+10. **Report Clearly** - Return only actionable findings with severity, location, impact, evidence, and a concrete suggestion.
 
 ## Review Checklist
 
