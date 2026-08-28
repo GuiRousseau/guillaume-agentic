@@ -10,7 +10,8 @@ The agentic system follows a **skill-based orchestration pattern**:
 ┌─────────────────────────────────────┐
 │         Agents (Orchestrators)      │
 │  - TypeScript Coder Agent (React dev)      │
-│  - Research Agent (Info gathering)  │
+│  - Code Reviewer Agent (React/TS review)   │
+│  - Research Agent (Info gathering)        │
 └──────────────┬──────────────────────┘
                │
         ┌──────┴──────┐
@@ -38,6 +39,22 @@ The agentic system follows a **skill-based orchestration pattern**:
 - **Separation of Concerns**: Agents orchestrate; skills execute; rules constrain
 
 ## Agents
+
+### Code Reviewer Agent (`.agent/agents/agents/code-reviewer/`)
+
+A professional React and TypeScript reviewer specializing in architecture, correctness, readability, library usage, accessibility, performance risks, and test quality.
+
+**Capabilities:**
+- Review React rendering, hooks, state, effects, forms, and accessibility
+- Review TypeScript type safety, async behavior, and API contracts
+- Identify architecture issues, coupling, regressions, and library misuse
+- Report prioritized, evidence-based findings with file and line references
+
+**Integration:**
+- Invokes `code-review-skill` for quality and standards analysis
+- Invokes `information-skill` for repository context and architecture discovery
+- Invokes `test-validation-skill` for test and coverage-gap analysis
+- Invokes `research-agent` when library or framework behavior needs verification
 
 ### TypeScript Coder Agent (`.agent/agents/agents/typescript-coder/`)
 
@@ -394,6 +411,9 @@ This allows skills to generate correct scripts and commands for the detected pac
 .agent/
 ├── agents/
 │   └── agents/
+│       ├── code-reviewer/
+│       │   ├── AGENT.md                   # Configuration and review contract
+│       │   └── README.md                  # Detailed documentation
 │       ├── typescript-coder/
 │       │   ├── agent-config.json          # Configuration
 │       │   └── README.md                  # Documentation
@@ -487,6 +507,8 @@ AGENT_SYSTEM_OVERVIEW.md                  # This file
 - `.agent/rules/readability-standards.md` - Code readability standards
 
 ### From Agent Specifications
+- `.agent/agents/agents/code-reviewer/README.md` - Code reviewer agent documentation
+- `.agent/agents/agents/code-reviewer/AGENT.md` - Code reviewer configuration and contract
 - `.agent/agents/agents/typescript-coder/README.md` - Developer agent detailed docs
 - `.agent/agents/agents/typescript-coder/agent-config.json` - Agent configuration
 - `.agent/agents/agents/research-agent/README.md` - Research agent detailed docs
