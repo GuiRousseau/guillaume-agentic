@@ -1,0 +1,11 @@
+{
+  "name": "guillaume-agentic",
+  "private": true,
+  "description": "Reusable agent skills",
+  "scripts": {
+    "setup": "./setup.sh",
+    "skills:add": "npx skills add",
+    "skills:list": "npx skills list",
+    "skills:update": "npx skills update"
+  }
+}
