@@ -8,6 +8,7 @@ All behavior lives in `.agents/skills/<name>/SKILL.md` (max 150 lines each):
 
 | Skill | Purpose |
 |---|---|
+| `coder` | Entry point combining all coding skills; commits/pushes only with permission |
 | `backend-developer` | TypeScript backend with TDD, Hexagonal Architecture, SOLID |
 | `react-developer` | React/TypeScript components and tests |
 | `code-review` | React/TypeScript and backend review |
