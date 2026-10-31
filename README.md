@@ -14,7 +14,7 @@ All behavior lives in `.agents/skills/<name>/SKILL.md` (max 150 lines each):
 | `test-validation` | Test writing, coverage and quality rules |
 | `readability-standards` | Naming, function size, comments |
 | `research` | Verified, cited technical research |
-| `branch-naming` | `feature/…` and `fix/…` branch format |
+| `git` | Branch naming (`feature/…`, `fix/…`) and 🤖-prefixed review comments |
 
 ## Use skills in other projects
 

@@ -7,4 +7,4 @@ This repo is a collection of reusable agent **skills**. Agents, rules and skills
 - Keep every `SKILL.md` at 150 lines or fewer; drop guidance that is common knowledge.
 - New capability, workflow or policy → new skill (or extend an existing one).
 - `setup.sh` symlinks skills into the user's agent folders; `npx skills add <repo>` imports external skills.
-- Branches: follow the `branch-naming` skill.
+- Branches and review comments: follow the `git` skill.

@@ -1,9 +1,15 @@
 ---
-name: branch-naming
-description: Name git branches for this project. Use whenever creating or renaming a branch.
+name: git
+description: Git conventions for this project: branch naming and AI review/comment style. Use when creating or renaming a branch, or when asked to review code or leave comments.
 ---
 
-# Branch Naming
+# Git
+
+## Reviews and comments
+
+When asked for a review or comments, start every comment with 🤖 followed by one emoji fitting the message, e.g. `🤖 🐛` bug, `🤖 💡` suggestion, `🤖 ⚠️` risk, `🤖 ❓` question, `🤖 ✅` praise, `🤖 🧹` nit.
+
+## Branch naming
 
 Format: `feature/<summary>` for new functionality, `fix/<summary>` for bug fixes.
 
