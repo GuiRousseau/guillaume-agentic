@@ -5,7 +5,7 @@
   "scripts": {
     "setup": "./setup.sh",
     "skills:add": "npx skills add",
-    "skills:install": "npx skills experimental_install",
+    "skills:install": "bash ./setup.sh --install-external",
     "skills:list": "npx skills list",
     "skills:update": "npx skills update"
   }

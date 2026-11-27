@@ -30,13 +30,13 @@ which must contain the current `skills-lock.json`.
 
 ## Import skills from other repos
 
-Uses [`npx skills`](https://github.com/vercel-labs/skills); imported skills land in `.agents/skills/`.
-Setup restores project dependencies from `skills-lock.json`. Imported Ponytail
-files are installed locally, not committed.
+Uses [`npx skills`](https://github.com/vercel-labs/skills). Setup restores the
+locked external dependencies under `skills/external/` and links them into the
+personal agent folders. That folder is ignored by Git.
 
 ```bash
 npm run skills:install        # restore the locked skills
-npx skills add owner/repo     # or: npm run skills:add -- owner/repo
+npx skills add owner/repo     # add a skill to .agents/skills/
 npx skills list
 npx skills update
 ```

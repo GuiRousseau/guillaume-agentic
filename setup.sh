@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Symlink this repo's skills into your personal agent folders so every project can use them.
-# Usage: ./setup.sh [--uninstall] [target_dir ...]
+# Usage: ./setup.sh [--uninstall | --install-external] [target_dir ...]
 # Default targets: ~/.agents/skills ~/.claude/skills ~/.copilot/skills
 set -euo pipefail
 
@@ -16,6 +16,7 @@ if git -C "$SCRIPT_DIR" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
 fi
 
 SKILLS_SRC="$REPO_ROOT/.agents/skills"
+EXTERNAL_ROOT="$REPO_ROOT/skills/external"
 is_windows=false
 case "$(uname -s)" in
   CYGWIN*|MINGW*|MSYS*) is_windows=true ;;
@@ -46,8 +47,12 @@ remove_windows_link() {
 }
 
 uninstall=false
+install_external_only=false
 if [[ "${1:-}" == "--uninstall" ]]; then
   uninstall=true
+  shift
+elif [[ "${1:-}" == "--install-external" ]]; then
+  install_external_only=true
   shift
 fi
 
@@ -60,7 +65,13 @@ if ! $uninstall; then
     echo "npx is required to restore external skills. Install Node.js and npm first." >&2
     exit 1
   fi
-  (cd "$REPO_ROOT" && npx skills experimental_install --frozen-lockfile)
+  mkdir -p "$EXTERNAL_ROOT"
+  cp "$REPO_ROOT/skills-lock.json" "$EXTERNAL_ROOT/skills-lock.json"
+  (cd "$EXTERNAL_ROOT" && npx skills experimental_install --frozen-lockfile)
+fi
+
+if $install_external_only; then
+  exit 0
 fi
 
 targets=("$@")
@@ -70,7 +81,7 @@ fi
 
 for target in "${targets[@]}"; do
   $uninstall || mkdir -p "$target"
-  for skill in "$SKILLS_SRC"/*/; do
+  for skill in "$SKILLS_SRC"/*/ "$EXTERNAL_ROOT"/.agents/skills/*/; do
     [[ -f "$skill/SKILL.md" ]] || continue
     name="$(basename "$skill")"
     link="$target/$name"
