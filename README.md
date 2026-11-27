@@ -20,17 +20,23 @@ All behavior lives in `.agents/skills/<name>/SKILL.md` (max 150 lines each):
 ## Use skills in other projects
 
 ```bash
-./setup.sh              # symlink into ~/.agents/skills, ~/.claude/skills, ~/.copilot/skills
+./setup.sh              # restore locked skills and link into personal agent folders
 ./setup.sh ~/my/dir     # or into custom target folders
 ./setup.sh --uninstall  # remove the symlinks
 ```
 
+Setup requires Node.js and npm. From a Git worktree it uses the main checkout,
+which must contain the current `skills-lock.json`.
+
 ## Import skills from other repos
 
-Uses [`npx skills`](https://github.com/vercel-labs/skills); imported skills land in `.agents/skills/`.
+Uses [`npx skills`](https://github.com/vercel-labs/skills). Setup restores the
+locked external dependencies under `skills/external/` and links them into the
+personal agent folders. That folder is ignored by Git.
 
 ```bash
-npx skills add owner/repo     # or: npm run skills:add -- owner/repo
+npm run skills:install        # restore the locked skills
+npx skills add owner/repo     # add a skill to .agents/skills/
 npx skills list
 npx skills update
 ```
