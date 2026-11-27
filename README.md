@@ -20,16 +20,22 @@ All behavior lives in `.agents/skills/<name>/SKILL.md` (max 150 lines each):
 ## Use skills in other projects
 
 ```bash
-./setup.sh              # symlink into ~/.agents/skills, ~/.claude/skills, ~/.copilot/skills
+./setup.sh              # restore locked skills and link into personal agent folders
 ./setup.sh ~/my/dir     # or into custom target folders
 ./setup.sh --uninstall  # remove the symlinks
 ```
 
+Setup requires Node.js and npm. From a Git worktree it uses the main checkout,
+which must contain the current `skills-lock.json`.
+
 ## Import skills from other repos
 
 Uses [`npx skills`](https://github.com/vercel-labs/skills); imported skills land in `.agents/skills/`.
+Setup restores project dependencies from `skills-lock.json`. Imported Ponytail
+files are installed locally, not committed.
 
 ```bash
+npm run skills:install        # restore the locked skills
 npx skills add owner/repo     # or: npm run skills:add -- owner/repo
 npx skills list
 npx skills update
